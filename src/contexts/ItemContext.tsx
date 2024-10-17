@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
 export interface Item {
     id: number;
@@ -22,7 +22,14 @@ export interface Item {
 export const ItemContext = createContext<ItemContextType>({} as ItemContextType);
 
 export function ItemProvider({children}: ItemProviderProps){
-    const [items, setItems] = useState<Item[]>([]);
+    const [items, setItems] = useState<Item[]>(() => {
+        const storedItems = localStorage.getItem('items');
+        return storedItems ? JSON.parse(storedItems) : [];
+      });
+    
+    useEffect(() => {
+    localStorage.setItem('items', JSON.stringify(items));
+    }, [items]);
 
     function addItem(item: Item){
         setItems((items) => [...items, item]);
