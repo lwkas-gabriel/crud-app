@@ -10,7 +10,7 @@ export const Overlay = styled(Dialog.Overlay)`
 `;
 
 export const Content = styled(Dialog.Content)`
-    min-width: 32rem;
+    min-width: 40%;
     border-radius: 6px;
     padding: 2.5rem 3rem;
 
@@ -18,12 +18,24 @@ export const Content = styled(Dialog.Content)`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #cccccc90;
+    background-color: #cccccc99;
 
     div{
         display: flex;
         justify-content: space-between;
     }
+
+    form{
+        div{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+`;
+
+export const InputContainer = styled.form`
+    display: flex;
+    flex-direction: column;
 `;
 
 export const CloseButton = styled(Dialog.Close)`

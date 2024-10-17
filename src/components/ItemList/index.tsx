@@ -20,7 +20,7 @@ export function ItemList(){
                                     <Dialog.Trigger asChild>
                                         <button className="edit-btn">Editar</button>
                                     </Dialog.Trigger>
-                                    <EditItemModal />
+                                    <EditItemModal itemId={item.id}/>
                                 </Dialog.Root>
                                 <button className="remove-btn" onClick={() => removeItem(item.id)}>Delete</button>
                             </OperationContainer>

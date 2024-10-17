@@ -28,15 +28,16 @@ export function ItemForm(){
     function handleCreateItem(data: ItemFormInput){
         const newItem = {id: Date.now(), createdAt: new Date(), ...data};
         addItem(newItem);
+        console.log(newItem);
         reset();
         //searchIssues(data.query);
     }
 
     return (
         <Form action="" onSubmit={handleSubmit(handleCreateItem)}>
-            <Input type="text" placeholder="Nome" {...register("name")}/>
+            <Input type="text" placeholder="Nome" {...register("name")} />
             {errors.name && <ErrorMsg>{errors.name.message}</ErrorMsg>}
-            <Input type="text" placeholder="Descrição" {...register("description")}/>
+            <Input type="text" placeholder="Descrição" {...register("description")} />
             {errors.description && <ErrorMsg>{errors.description.message}</ErrorMsg>}
             <Button type="submit" disabled={isSubmitting}>Enviar</Button>
             <Select {...register('priority')}>

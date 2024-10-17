@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useState } from "react";
 
-interface Item {
+export interface Item {
     id: number;
     createdAt: Date;
     name: string;
@@ -25,15 +25,15 @@ export function ItemProvider({children}: ItemProviderProps){
     const [items, setItems] = useState<Item[]>([]);
 
     function addItem(item: Item){
-        setItems((state) => [...state, item]);
+        setItems((items) => [...items, item]);
     }
 
     function updateItem(id: number, update: Item){
-        setItems((state) => state.map((item) => (item.id === id ? update : item)));
+        setItems((items) => items.map((item) => (item.id === id ? update : item)));
     }
 
     function removeItem(id: number){
-        setItems((state) => state.filter((item) => item.id !== id));
+        setItems((items) => items.filter((item) => item.id !== id));
     }
 
     return (
