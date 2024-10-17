@@ -10,15 +10,16 @@ export const Overlay = styled(Dialog.Overlay)`
 `;
 
 export const Content = styled(Dialog.Content)`
-    min-width: 40%;
+    width: 50%;
+    min-width: 240px;
     border-radius: 6px;
-    padding: 2.5rem 3rem;
+    padding: 1rem;
 
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #cccccc99;
+    background-color: gray;
 
     div{
         display: flex;
@@ -26,9 +27,19 @@ export const Content = styled(Dialog.Content)`
     }
 
     form{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
         div{
             display: flex;
             flex-direction: column;
+        }
+
+        button{
+            margin-top: 10px;
+            border-radius: 6px;
+            background-color: green;
         }
     }
 `;
