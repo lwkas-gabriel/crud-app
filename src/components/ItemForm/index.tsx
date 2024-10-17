@@ -13,6 +13,10 @@ const itemSchema = z.object({
 
 type ItemFormInput = z.infer<typeof itemSchema>;
 
+// interface ItemFormProps{
+//     data?:ItemFormProps
+// }
+
 
 export function ItemForm(){
     const { reset, handleSubmit, register, formState: {errors, isSubmitting} } = useForm<ItemFormInput>({
