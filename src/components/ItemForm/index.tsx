@@ -15,7 +15,7 @@ type ItemFormInput = z.infer<typeof itemSchema>;
 
 
 export function ItemForm(){
-    const { handleSubmit, register, formState: {errors, isSubmitting} } = useForm<ItemFormInput>({
+    const { reset, handleSubmit, register, formState: {errors, isSubmitting} } = useForm<ItemFormInput>({
         resolver: zodResolver(itemSchema),
     });
 
@@ -24,6 +24,7 @@ export function ItemForm(){
     function handleCreateItem(data: ItemFormInput){
         const newItem = {id: Date.now(), createdAt: new Date(), ...data};
         addItem(newItem);
+        reset();
         //searchIssues(data.query);
     }
 

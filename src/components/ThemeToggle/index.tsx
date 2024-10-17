@@ -6,7 +6,7 @@ export function ThemeToggle(){
 
     return (
         <button onClick={toggleTheme}>
-            Alternar para {theme === 'light' ? 'Dark' : 'Light'} Mode
+            Alternar para {theme.mode === 'light' ? 'Dark' : 'Light'} Mode
         </button>
     );
 }
