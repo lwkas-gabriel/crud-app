@@ -1,8 +1,7 @@
+import { ItemForm } from "./components/ItemForm";
 
 export function App() {
   return (
-    <h1>
-      Hello World!
-    </h1>
+    <ItemForm />
   )
 }
