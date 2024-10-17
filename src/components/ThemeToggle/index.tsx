@@ -1,3 +1,12 @@
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
+
 export function ThemeToggle(){
-    return <h1>ThemeToggle</h1>
+    const { theme, toggleTheme } = useContext(ThemeContext);
+
+    return (
+        <button onClick={toggleTheme}>
+            Alternar para {theme === 'light' ? 'Dark' : 'Light'} Mode
+        </button>
+    );
 }
