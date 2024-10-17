@@ -2,9 +2,9 @@ import { createContext, ReactNode, useState } from "react";
 
 interface Item {
     id: number;
+    createdAt: Date;
     name: string;
     description: string;
-    createdAt: Date;
     priority: 'alta' | 'média' | 'baixa';
   }
   
@@ -19,7 +19,7 @@ interface Item {
     removeItem: (id: number) => void;
   }
 
-const ItemContext = createContext<ItemContextType | undefined>(undefined);
+export const ItemContext = createContext<ItemContextType>({} as ItemContextType);
 
 export function ItemProvider({children}: ItemProviderProps){
     const [items, setItems] = useState<Item[]>([]);

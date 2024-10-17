@@ -2,6 +2,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod"
 import { Input, Button, Form, Select, ErrorMsg } from "./styles";
+import { useContext } from "react";
+import { ItemContext } from "../../contexts/ItemContext";
 
 const itemSchema = z.object({
     name: z.string().min(3, {message: "O nome deve ter pelo menos 3 caracteres"}),
@@ -17,8 +19,11 @@ export function ItemForm(){
         resolver: zodResolver(itemSchema),
     });
 
+    const { addItem } = useContext(ItemContext);
+
     function handleCreateItem(data: ItemFormInput){
-        console.log(data);
+        const newItem = {id: Date.now(), createdAt: new Date(), ...data};
+        addItem(newItem);
         //searchIssues(data.query);
     }
 
