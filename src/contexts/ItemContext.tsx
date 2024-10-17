@@ -15,7 +15,7 @@ export interface Item {
   interface ItemContextType {
     items: Item[];
     addItem: (item: Item) => void;
-    updateItem: (id: number, updatedItem: Item) => void;
+    updateItem: (updatedItem: Item) => void;
     removeItem: (id: number) => void;
   }
 
@@ -35,8 +35,8 @@ export function ItemProvider({children}: ItemProviderProps){
         setItems((items) => [...items, item]);
     }
 
-    function updateItem(id: number, update: Item){
-        setItems((items) => items.map((item) => (item.id === id ? update : item)));
+    function updateItem(update: Item){
+        setItems((items) => items.map((item) => (item.id === update.id ? update : item)));
     }
 
     function removeItem(id: number){
