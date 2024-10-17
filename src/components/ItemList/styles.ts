@@ -8,6 +8,7 @@ export const Container = styled.div`
 export const ListContainer = styled.ul`
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 1rem;
     list-style: none;
@@ -16,6 +17,8 @@ export const ListContainer = styled.ul`
 `;
 
 export const Item = styled.li`
+    width: 50%;
+    min-width: 240px;
     padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
