@@ -28,9 +28,7 @@ export function ItemForm(){
     function handleCreateItem(data: ItemFormInput){
         const newItem = {id: Date.now(), createdAt: new Date(), ...data};
         addItem(newItem);
-        console.log(newItem);
         reset();
-        //searchIssues(data.query);
     }
 
     return (
