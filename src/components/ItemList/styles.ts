@@ -16,7 +16,7 @@ export const ListContainer = styled.ul`
     padding: 20px;
 `;
 
-export const Item = styled.li`
+export const Card = styled.li`
     width: 50%;
     min-width: 240px;
     padding: 1rem;
