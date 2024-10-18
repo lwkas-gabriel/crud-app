@@ -35,7 +35,7 @@ export function EditItemModal({itemId}: EditModalProps){
     function update(data: ItemFormData){
         const newItem: Item = {id: itemId, createdAt: item!.createdAt, ...data}
         //console.log(item);
-        updateItem(itemId, newItem);
+        updateItem(newItem);
         reset();
     }
 
