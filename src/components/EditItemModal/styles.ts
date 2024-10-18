@@ -10,20 +10,43 @@ export const Overlay = styled(Dialog.Overlay)`
 `;
 
 export const Content = styled(Dialog.Content)`
-    min-width: 32rem;
+    width: 50%;
+    min-width: 240px;
     border-radius: 6px;
-    padding: 2.5rem 3rem;
+    padding: 1rem;
 
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #cccccc90;
+    background-color: gray;
 
     div{
         display: flex;
         justify-content: space-between;
     }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        div{
+            display: flex;
+            flex-direction: column;
+        }
+
+        button{
+            margin-top: 10px;
+            border-radius: 6px;
+            background-color: green;
+        }
+    }
+`;
+
+export const InputContainer = styled.form`
+    display: flex;
+    flex-direction: column;
 `;
 
 export const CloseButton = styled(Dialog.Close)`
