@@ -1,4 +1,26 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+const fadeOut = keyframes`
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+`;
 
 export const Container = styled.div`
     width: 100%;
@@ -16,12 +38,14 @@ export const ListContainer = styled.ul`
     padding: 20px;
 `;
 
-export const Card = styled.li`
+export const Card = styled.li<{ isExiting: boolean }>`
     width: 50%;
     min-width: 240px;
     padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
+    animation: ${(props) => (props.isExiting ? fadeOut : fadeIn)} 0.5s forwards;
+    transition: background-color 0.3s ease, color 0.3s ease;
 
     h3{
         margin: 0;
