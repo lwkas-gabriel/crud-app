@@ -8,16 +8,17 @@ export interface Item {
     priority: 'alta' | 'média' | 'baixa';
   }
   
-  interface ItemProviderProps{
-    children: ReactNode;
+interface ItemProviderProps{
+  children: ReactNode;
 }
 
-  interface ItemContextType {
-    items: Item[];
-    addItem: (item: Item) => void;
-    updateItem: (updatedItem: Item) => void;
-    removeItem: (id: number) => void;
-  }
+interface ItemContextType {
+  items: Item[];
+  addItem: (item: Item) => void;
+  updateItem: (updatedItem: Item) => void;
+  removeItem: (id: number) => void;
+  filterItems: (priority: 'alta' | 'média' | 'baixa' | 'none') => void;
+}
 
 export const ItemContext = createContext<ItemContextType>({} as ItemContextType);
 
@@ -26,10 +27,21 @@ export function ItemProvider({children}: ItemProviderProps){
         const storedItems = localStorage.getItem('items');
         return storedItems ? JSON.parse(storedItems) : [];
       });
+    const [filteredTasks, setFilteredTasks] = useState<Item[]>(items);
     
     useEffect(() => {
-    localStorage.setItem('items', JSON.stringify(items));
+      localStorage.setItem('items', JSON.stringify(items));
+      setFilteredTasks(items);
     }, [items]);
+
+
+    function filterItems(priority: 'alta' | 'média' | 'baixa' | 'none'){
+      if (priority === 'none') {
+        setFilteredTasks(items);
+      } else {
+        setFilteredTasks(items.filter(item => item.priority === priority));
+      }
+    }
 
     function addItem(item: Item){
         setItems((items) => [...items, item]);
@@ -44,7 +56,7 @@ export function ItemProvider({children}: ItemProviderProps){
     }
 
     return (
-        <ItemContext.Provider value={{items, addItem, updateItem, removeItem}}>
+        <ItemContext.Provider value={{items: filteredTasks, addItem, updateItem, removeItem, filterItems}}>
             {children}
         </ItemContext.Provider>
     )
